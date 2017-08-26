@@ -77,10 +77,10 @@
 #define pow2f(a) ((float)(((float)(a))*((float)(a))))
 #endif
 #ifndef getColorError
-#define getColorError(a,b) floatDiv(sqrt((float)pow2f(getRed(a)-getRed(b))+pow2f(getGreen(a)-getGreen(b))+pow2f(getBlue(a)-getBlue(b))),sqrt(195075.0f))
+#define getColorError(a,b) floatDiv(sqrt((float)pow2f((float)getRed(a)-(float)getRed(b))+pow2f((float)getGreen(a)-(float)getGreen(b))+pow2f((float)getBlue(a)-(float)getBlue(b))),sqrt(195075.0f))
 #endif
 #ifndef getLinearColorError
-#define getLinearColorError(a,b) floatDiv((floatDiv(abs(getRed(a)-getRed(b)),255.0f)+floatDiv(abs(getGreen(a)-getGreen(b)),255.0f)+floatDiv(abs(getBlue(a)-getBlue(b))),255.0f),3.0f)
+#define getLinearColorError(a,b) floatDiv((floatDiv(abs((float)getRed(a)-(float)getRed(b)),255.0f)+floatDiv(abs((float)getGreen(a)-(float)getGreen(b)),255.0f)+floatDiv(abs((float)getBlue(a)-(float)getBlue(b))),255.0f),3.0f)
 #endif
 #ifndef ifGTZero
 #define ifGTZero(x) ((x)>0?(x):0)
@@ -95,7 +95,7 @@
 #define __min(x,y) ((x)<(y)?(x):(y))
 #endif
 #ifndef radians
-#define radians(x) (((x)*180)/M_PI)
+#define radians(x) ((((float)x)/180.0f)*M_PI)
 #endif
 
 #endif // EXTCOLORDEFS_H
